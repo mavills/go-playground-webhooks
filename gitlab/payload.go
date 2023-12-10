@@ -561,6 +561,7 @@ type Build struct {
 	FailureReason string        `json:"failure_reason"`
 	When          string        `json:"when"`
 	Manual        bool          `json:"manual"`
+	AllowFailure  bool          `json:"allow_failure"`
 	User          User          `json:"user"`
 	Runner        Runner        `json:"runner"`
 	ArtifactsFile ArtifactsFile `json:"artifactsfile"`
