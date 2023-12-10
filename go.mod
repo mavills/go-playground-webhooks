@@ -1,4 +1,4 @@
-module github.com/mavills/go-playground-webhooks/v6
+module github.com/mavills/go-playground-webhooks
 
 go 1.17
 
