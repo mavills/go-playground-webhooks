@@ -796,7 +796,7 @@ type AccessTokenObjectAttributes struct {
 	CreatedAt customTime `json:"created_at"`
 	ID        int64      `json:"id"`
 	Name      string     `json:"name"`
-	ExpiresAt customTime `json:"expires_at"`
+	ExpiresAt string     `json:"expires_at"`
 }
 
 // Variable contains pipeline variables
