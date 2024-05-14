@@ -37,6 +37,7 @@ const (
 	JobEvents                 Event  = "Job Hook"
 	DeploymentEvents          Event  = "Deployment Hook"
 	ReleaseEvents             Event  = "Release Hook"
+	AccessTokenEvents         Event  = "Resource Access Token Hook"
 	SystemHookEvents          Event  = "System Hook"
 	objectPush                string = "push"
 	objectTag                 string = "tag_push"
@@ -356,6 +357,10 @@ func eventParsing(gitLabEvent Event, events []Event, payload []byte) (interface{
 		}
 	case ReleaseEvents:
 		var pl ReleaseEventPayload
+		err := json.Unmarshal([]byte(payload), &pl)
+		return pl, err
+	case AccessTokenEvents:
+		var pl AccessTokenEventPayload
 		err := json.Unmarshal([]byte(payload), &pl)
 		return pl, err
 	default:

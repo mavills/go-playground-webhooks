@@ -510,6 +510,45 @@ type ReleaseEventPayload struct {
 	Assets      Assets     `json:"assets"`
 }
 
+// ObjectKind          string      `json:"object_kind"`
+//
+//	Ref                 string      `json:"ref"`
+//	Tag                 bool        `json:"tag"`
+//	BeforeSHA           string      `json:"before_sha"`
+//	SHA                 string      `json:"sha"`
+//	BuildID             int64       `json:"build_id"`
+//	BuildName           string      `json:"build_name"`
+//	BuildStage          string      `json:"build_stage"`
+//	BuildStatus         string      `json:"build_status"`
+//	BuildStartedAt      customTime  `json:"build_started_at"`
+//	BuildFinishedAt     customTime  `json:"build_finished_at"`
+//	BuildQueuedDuration float64     `json:"build_queued_duration"`
+//	BuildDuration       float64     `json:"build_duration"`
+//	BuildAllowFailure   bool        `json:"build_allow_failure"`
+//	BuildFailureReason  string      `json:"build_failure_reason"`
+//	PipelineID          int64       `json:"pipeline_id"`
+//	ProjectID           int64       `json:"project_id"`
+//	ProjectName         string      `json:"project_name"`
+//	User                User        `json:"user"`
+//	Commit              BuildCommit `json:"commit"`
+//	Repository          Repository  `json:"repository"`
+//	Runner              Runner      `json:"runner"`
+
+type AccessTokenGroupEventPayload struct {
+	GroupAccess string `json:"group_access"`
+	GroupID     int64  `json:"group_id"`
+	GroupName   string `json:"group_name"`
+	GroupPath   string `json:"group_path"`
+}
+
+type AccessTokenEventPayload struct {
+	ObjectKind       string                       `json:"object_kind"`
+	Project          Project                      `json:"project"`
+	Group            AccessTokenGroupEventPayload `json:"group"`
+	ObjectAttributes AccessTokenObjectAttributes  `json:"object_attributes"`
+	EventName        string                       `json:"event_name"`
+}
+
 // Assets represent artefacts and links associated to a release
 type Assets struct {
 	Count   int           `json:"count"`
@@ -750,6 +789,14 @@ type PipelineObjectAttributes struct {
 	Duration   int64      `json:"duration"`
 	Variables  []Variable `json:"variables"`
 	Url        string     `json:"url"`
+}
+
+type AccessTokenObjectAttributes struct {
+	UserID    int64      `json:"user_id"`
+	CreatedAt customTime `json:"created_at"`
+	ID        int64      `json:"id"`
+	Name      string     `json:"name"`
+	ExpiresAt customTime `json:"expires_at"`
 }
 
 // Variable contains pipeline variables
